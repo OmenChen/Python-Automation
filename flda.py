@@ -1,9 +1,10 @@
+#灵镜奇谭游戏道长自动平A
 import pyautogui as py   #键鼠控制
 import time   #时间
 import keyboard   #键盘监测
 from pynput import mouse   #鼠标监测
 import threading    #线程
-import tkinter.messagebox
+import tkinter.messagebox   #弹窗提示
 '''
 
 采用多线程技术解决键鼠在监听时导致游戏卡顿的问题

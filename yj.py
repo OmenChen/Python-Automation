@@ -1,14 +1,12 @@
+#永杰自动刷玉
+
 import win32api
 import win32con
-import win32gui
-import win32com.client
 import time   #时间
 import pyautogui as py   #键鼠控制
 import pydirectinput #键盘控制
+import wxauto     #微信自动化
 
-import keyboard   #键盘监测
-import threading    #线程
-import tkinter.messagebox
 
 '''
 界面大小1600*900
@@ -18,6 +16,7 @@ import tkinter.messagebox
 runing = True
 mouseColor = 255255255
 count = 0   # 计数
+content = 0
 
 class game:
     #滑步左键蓄力接破罡
@@ -131,6 +130,52 @@ class mouse:
     # if count == 6:
     #     break
 
+# time.sleep(3)
+# wx = wxauto.WeChat()
+# t = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+# message = str(t) + ' 完成'
+# wx.SendMsg(message,'CR')
+# wx.AddListenChat(who='CR')
+# while content == 0:
+#     msgs = wx.GetListenMessage()
+#     for chat in msgs:
+#         one_msgs = msgs.get(chat)   # 获取消息内容
+#         print(one_msgs[-1])
+#         if str(one_msgs[-1]) == '是':
+#             print(one_msgs[-1])
+#         if str(one_msgs[-1]) == '否':
+#             content = 1
+#             break
+
+    # for chat in msgs:
+    #     who = chat.who
+    #     one_msgs = msgs.get(chat)
+    #     for msg in one_msgs:
+    #         msgtype = msg.type
+    #         content = msg.content
+    #         print(f'【{who}】：{content}')
+    #         if content == '是':
+    #             chat.SendMsg('OK')
+    #         if content == '否':
+    #             break
+                
+
+# msgs = wx.GetAllNewMessage()
+# print(msgs)
+# pydirectinput.keyDown('ctrl')
+# pydirectinput.keyDown('alt')
+# pydirectinput.keyDown('w')
+# pydirectinput.keyUp('w')
+# pydirectinput.keyUp('alt')
+# pydirectinput.keyUp('ctrl')
+# py.click(614,237)
+# py.typewrite('文件')
+
+# time.sleep(0.5)
+# py.click(662,325)
+# py.typewrite('完成')
+# py.press('enter')
+
 while runing:
     win32api.Sleep(10)
     #开始游戏
@@ -141,8 +186,26 @@ while runing:
         if py.pixelMatchesColor(1661,926,(255,255,255)) == True and py.pixelMatchesColor(1509,935,(255,255,255)) == True:
             win32api.SetCursorPos((1590,923))
             mouse.mouse_LEFT()
+            win32api.Sleep(2000)
             if py.pixelMatchesColor(917,607,(158,38,36)) == True:
-                exit(0)
+                wx = wxauto.WeChat()
+                t = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+                message = str(t) + ' 完成'
+                wx.SendMsg(message,'CR')
+                win32api.Sleep(2000)
+                # wx.AddListenChat(who='CR')
+                # content = 0
+                # while content == 0:
+                #     msgs = wx.GetListenMessage()
+                #     for chat in msgs:
+                #         one_msgs = msgs.get(chat)   # 获取消息内容
+                #         if str(one_msgs[-1]) == '是':
+                #             print('切换账号')
+                #             content = 1
+                #             break
+                #         if str(one_msgs[-1]) == '否':
+                #             exit(0)
+                exit(0)  
             break
     #角色选择
     while True:
@@ -206,14 +269,16 @@ while runing:
                 mouse.mouse_LEFT()
                 win32api.Sleep(200)
                 pydirectinput.press('space')
-            if py.pixelMatchesColor(948,316,(255,255,255)) == True and py.pixelMatchesColor(948,330,(255,255,255)) == True and py.pixelMatchesColor(253,949,(229,246,255)) == True:  #979,305
-                pydirectinput.press('esc')
-                win32api.Sleep(200)
-                win32api.SetCursorPos((959,721))
-                mouse.mouse_LEFT()
-                win32api.Sleep(200)
-                pydirectinput.press('space')
+            # if py.pixelMatchesColor(948,316,(255,255,255)) == True and py.pixelMatchesColor(948,330,(255,255,255)) == True and py.pixelMatchesColor(253,949,(229,246,255)) == True:  #979,305
+            #     pydirectinput.press('esc')
+            #     win32api.Sleep(200)
+            #     win32api.SetCursorPos((959,721))
+            #     mouse.mouse_LEFT()
+            #     win32api.Sleep(200)
+            #     pydirectinput.press('space')
             if py.pixelMatchesColor(911,931,(164,52,45)) == True or py.pixelMatchesColor(1167,927,(130,98,78)) == True or py.pixelMatchesColor(1138,926,(128,97,81)) == True:
+                win32api.SetCursorPos((962,589))
+                mouse.mouse_LEFT()
                 while True:
                     if py.pixelMatchesColor(1661,926,(255,255,255)) == True and py.pixelMatchesColor(1509,935,(255,255,255)) == True:
                         break

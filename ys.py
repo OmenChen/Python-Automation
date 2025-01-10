@@ -1,3 +1,5 @@
+#原神游戏
+
 import pyautogui as py   #键鼠控制
 import win32api
 import win32con
